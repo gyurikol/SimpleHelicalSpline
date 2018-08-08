@@ -22,6 +22,7 @@ namespace SimpleHelicalSpline.Classes
 
         // Helical Spline variables
         private double diameter, rotations, pitch;
+        private double zChangePerPoint;
         private HelicalSpline hs;
         private clockDirection direction;
         private double currentAngle;
@@ -60,7 +61,7 @@ namespace SimpleHelicalSpline.Classes
         /// Get Current X coordinate based on current angle
         /// </summary>
         /// <param name="angle">Angle being currently assessed</param>
-        /// <returns>Returns X coordinate</returns>
+        /// <returns>X coordinate</returns>
         private double GetXCoordinate(double angle)
         {
             return ( (diameter / 2) * Math.Cos(angle) );
@@ -70,10 +71,28 @@ namespace SimpleHelicalSpline.Classes
         /// Get Current Y coordinate based on current angle
         /// </summary>
         /// <param name="angle">Angle being currently assessed</param>
-        /// <returns>Returns X coordinate</returns>
+        /// <returns>X coordinate</returns>
         private double GetYCoordinate(double angle)
         {
             return ((diameter / 2) * Math.Sin(angle) );
+        }
+
+        /// <summary>
+        /// Get the z coordinate for the current point based on angular progress
+        /// </summary>
+        /// <param name="angle">Angle being currently assessed</param>
+        /// <returns>Z coordinate</returns>
+        private double GetZCoordinate(double angle)
+        {
+            return (angle / (2 * Math.PI)) * zChangePerPoint;
+        }
+
+        /// <summary>
+        /// Set the change in z axis per point
+        /// </summary>
+        private void SetZChangeValue()
+        {
+            zChangePerPoint = pitch * HelicalSpline.ROTATION_FREQUENCY;
         }
 
         /// <summary>
