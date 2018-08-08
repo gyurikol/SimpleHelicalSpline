@@ -38,6 +38,8 @@
             this.txtPitch = new System.Windows.Forms.TextBox();
             this.lstDirection = new System.Windows.Forms.ListBox();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.cboPPR = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // saveFileDialog1
@@ -118,19 +120,38 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(68, 124);
+            this.btnCreate.Location = new System.Drawing.Point(68, 152);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(204, 23);
+            this.btnCreate.Size = new System.Drawing.Size(204, 30);
             this.btnCreate.TabIndex = 8;
             this.btnCreate.Text = "Create Helical Spline";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
+            // cboPPR
+            // 
+            this.cboPPR.FormattingEnabled = true;
+            this.cboPPR.Location = new System.Drawing.Point(117, 125);
+            this.cboPPR.Name = "cboPPR";
+            this.cboPPR.Size = new System.Drawing.Size(155, 21);
+            this.cboPPR.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 128);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Points Per Rotation";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 190);
+            this.ClientSize = new System.Drawing.Size(284, 196);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cboPPR);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.lstDirection);
             this.Controls.Add(this.txtPitch);
@@ -140,6 +161,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmMain";
             this.Text = "Simple Helical Spline";
             this.ResumeLayout(false);
@@ -159,6 +181,8 @@
         private System.Windows.Forms.TextBox txtPitch;
         private System.Windows.Forms.ListBox lstDirection;
         private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.ComboBox cboPPR;
+        private System.Windows.Forms.Label label5;
     }
 }
 

@@ -106,7 +106,7 @@ namespace SimpleHelicalSpline.Classes
         /// </summary>
         private void SetZChangeValue()
         {
-            zChangePerPoint = pitch * HelicalSpline.ROTATION_FREQUENCY * -1;
+            zChangePerPoint = pitch * hs.rotationFrequency * -1;
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace SimpleHelicalSpline.Classes
         /// </summary>
         private void SetNextAngle()
         {
-            currentAngle += ((2 * Math.PI) * HelicalSpline.ROTATION_FREQUENCY);
+            currentAngle += ((2 * Math.PI) * hs.rotationFrequency);
         }
 
         /// <summary>
@@ -137,6 +137,15 @@ namespace SimpleHelicalSpline.Classes
         public string GetHelicalSplineFileData()
         {
             return hs.ToString();
+        }
+
+        /// <summary>
+        /// Set the amount of points to occur per rotation
+        /// </summary>
+        /// <param name="value">Points in rotation</param>
+        public void SetRotationFrequency(double value)
+        {
+            hs.rotationFrequency = value;
         }
     }
 }

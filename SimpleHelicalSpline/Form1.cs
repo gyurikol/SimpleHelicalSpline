@@ -19,6 +19,19 @@ namespace SimpleHelicalSpline
             // select list item clockwise by default
             lstDirection.SelectedIndex = 0;
 
+            // populate with factors of 360
+            for(int i = 4; i <= 360; i++)
+            {
+                if(360 % i == 0)
+                {
+                    cboPPR.Items.Add(i.ToString());
+                }
+            }
+            if (cboPPR.Items.Contains("72"))
+            {
+                cboPPR.SelectedIndex = cboPPR.FindStringExact("72");
+            }
+
         }
 
         /// <summary>
@@ -34,6 +47,9 @@ namespace SimpleHelicalSpline
                 Double.Parse(txtPitch.Text),
                 (Classes.HSBuilder.clockDirection)lstDirection.SelectedIndex
                 );
+
+            // set rotation frequency of helical spline
+            HSB.SetRotationFrequency(1d / double.Parse(cboPPR.SelectedItem.ToString()));
 
             // savefile dialog setup
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
