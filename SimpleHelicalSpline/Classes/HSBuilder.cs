@@ -112,7 +112,7 @@ namespace SimpleHelicalSpline.Classes
             return new Point(
                 GetXCoordinate(currentAngle),
                 GetYCoordinate(currentAngle),
-                0.0
+                GetZCoordinate(currentAngle)
                 );
         }
     }
