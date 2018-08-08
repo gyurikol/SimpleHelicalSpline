@@ -81,7 +81,20 @@ namespace SimpleHelicalSpline.Classes
         /// </summary>
         private void SetNextAngle()
         {
+            currentAngle += ((2 * Math.PI) * HelicalSpline.ROTATION_FREQUENCY);
+        }
 
+        /// <summary>
+        /// Function to create Current Point based on current assessment.
+        /// </summary>
+        /// <returns>Returns Current Point</returns>
+        private Point CreateCurrentPoint()
+        {
+            return new Point(
+                GetXCoordinate(currentAngle),
+                GetYCoordinate(currentAngle),
+                0.0
+                );
         }
     }
 }
