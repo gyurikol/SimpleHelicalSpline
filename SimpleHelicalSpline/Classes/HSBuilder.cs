@@ -26,6 +26,7 @@ namespace SimpleHelicalSpline.Classes
         private HelicalSpline hs;
         private clockDirection direction;
         private double currentAngle;
+        private int directionFlag;
 
         /// <summary>
         /// Constructor for the Helical Spline builder
@@ -42,8 +43,20 @@ namespace SimpleHelicalSpline.Classes
             pitch = Pitch;
             direction = Direction;
 
+            // set helical spline direction
+            if(Direction == clockDirection.CW)
+            { directionFlag = -1; }
+            else
+            { directionFlag = 1; }
+
+            // set the change in z per point
+            SetZChangeValue();
+
             // intialize helical spline
             hs = new HelicalSpline(rotations);
+
+            // create helical spline
+            CompileSplinePoints();
         }
 
         /// <summary>
@@ -53,7 +66,8 @@ namespace SimpleHelicalSpline.Classes
         {
             while( hs.NullPoints() != 0)
             {
-
+                hs.AddPoint( CreateCurrentPoint() );    // add point to helical spline
+                SetNextAngle();     // progress to next angle
             }
         }
 
@@ -64,7 +78,7 @@ namespace SimpleHelicalSpline.Classes
         /// <returns>X coordinate</returns>
         private double GetXCoordinate(double angle)
         {
-            return ( (diameter / 2) * Math.Cos(angle) );
+            return ( (diameter / 2) * Math.Cos(angle * directionFlag) );
         }
 
         /// <summary>
@@ -74,7 +88,7 @@ namespace SimpleHelicalSpline.Classes
         /// <returns>X coordinate</returns>
         private double GetYCoordinate(double angle)
         {
-            return ((diameter / 2) * Math.Sin(angle) );
+            return ((diameter / 2) * Math.Sin(angle * directionFlag) );
         }
 
         /// <summary>
@@ -84,7 +98,7 @@ namespace SimpleHelicalSpline.Classes
         /// <returns>Z coordinate</returns>
         private double GetZCoordinate(double angle)
         {
-            return (angle / (2 * Math.PI)) * zChangePerPoint;
+            return hs.CurrentPoint * zChangePerPoint;
         }
 
         /// <summary>
@@ -92,7 +106,7 @@ namespace SimpleHelicalSpline.Classes
         /// </summary>
         private void SetZChangeValue()
         {
-            zChangePerPoint = pitch * HelicalSpline.ROTATION_FREQUENCY;
+            zChangePerPoint = pitch * HelicalSpline.ROTATION_FREQUENCY * -1;
         }
 
         /// <summary>
@@ -114,6 +128,15 @@ namespace SimpleHelicalSpline.Classes
                 GetYCoordinate(currentAngle),
                 GetZCoordinate(currentAngle)
                 );
+        }
+
+        /// <summary>
+        /// Uses helical sline toString to return full helical spline
+        /// </summary>
+        /// <returns>String of total helical Spline</returns>
+        public string GetHelicalSplineFileData()
+        {
+            return hs.ToString();
         }
     }
 }

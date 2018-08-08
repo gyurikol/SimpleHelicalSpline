@@ -40,6 +40,11 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Text File|*.txt";
+            this.saveFileDialog1.Title = "Save Helical Spline File";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;

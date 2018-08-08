@@ -28,7 +28,22 @@ namespace SimpleHelicalSpline
         /// <param name="e">Event arguemmtns of Create Button Click</param>
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            
+            Classes.HSBuilder HSB = new Classes.HSBuilder(
+                Double.Parse(txtDiameter.Text),
+                Double.Parse(txtRotations.Text),
+                Double.Parse(txtPitch.Text),
+                (Classes.HSBuilder.clockDirection)lstDirection.SelectedIndex
+                );
+
+            // savefile dialog setup
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamWriter writer = new System.IO.StreamWriter(saveFileDialog1.OpenFile());
+                writer.Write(HSB.GetHelicalSplineFileData());
+                writer.Dispose();
+                writer.Close();
+                MessageBox.Show("File Complete");
+            }
         }
     }
 }

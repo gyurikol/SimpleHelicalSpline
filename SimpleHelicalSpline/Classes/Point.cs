@@ -46,7 +46,7 @@ namespace SimpleHelicalSpline.Classes
         /// <returns>Three Decimal place double as string</returns>
         private string ToThreeDecimalPlaces(double value)
         {
-            return String.Format("{F3}", value);
+            return value.ToString("F3");
         }
     }
 }

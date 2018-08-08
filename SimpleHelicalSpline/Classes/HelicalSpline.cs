@@ -11,9 +11,20 @@ namespace SimpleHelicalSpline.Classes
     /// </summary>
     class HelicalSpline
     {
-        public const double ROTATION_FREQUENCY = 1/72; //((2 * Math.PI) / 72); 5 degrees
+        public const double ROTATION_FREQUENCY = 1d/72d; //((2 * Math.PI) / 72); 5 degrees
         private Point[] points;
         private int currentPointCount = 0;
+
+        /// <summary>
+        /// Get current helical Spline point
+        /// </summary>
+        public int CurrentPoint
+        {
+            get
+            {
+                return currentPointCount;
+            }
+        }
 
         /// <summary>
         /// Helical Spline constructor
@@ -32,7 +43,7 @@ namespace SimpleHelicalSpline.Classes
         private void SetPointCount(double rotations)
         {
             // get point occurence count
-            double occuredPoints = (rotations * 360) / ROTATION_FREQUENCY;
+            double occuredPoints = (rotations / ROTATION_FREQUENCY) + 1;
 
             // set points array size
             points = new Point[Convert.ToInt32( Math.Floor(occuredPoints) )];
