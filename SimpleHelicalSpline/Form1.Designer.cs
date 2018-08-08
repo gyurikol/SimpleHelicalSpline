@@ -123,7 +123,7 @@
             this.btnCreate.Location = new System.Drawing.Point(68, 152);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(204, 30);
-            this.btnCreate.TabIndex = 8;
+            this.btnCreate.TabIndex = 9;
             this.btnCreate.Text = "Create Helical Spline";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -134,7 +134,7 @@
             this.cboPPR.Location = new System.Drawing.Point(117, 125);
             this.cboPPR.Name = "cboPPR";
             this.cboPPR.Size = new System.Drawing.Size(155, 21);
-            this.cboPPR.TabIndex = 9;
+            this.cboPPR.TabIndex = 8;
             // 
             // label5
             // 

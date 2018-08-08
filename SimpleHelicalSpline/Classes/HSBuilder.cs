@@ -35,7 +35,7 @@ namespace SimpleHelicalSpline.Classes
         /// <param name="rotations">Amount of rotations for the spline to perform</param>
         /// <param name="pitch">Pitch of the Spline</param>
         /// <param name="direction">Clock like direction of the spline</param>
-        public HSBuilder(double Diameter, double Rotations, double Pitch, clockDirection Direction )
+        public HSBuilder(double Diameter, double Rotations, double Pitch, clockDirection Direction, double RotateFrequency )
         {
             // set helical spline variables
             diameter = Diameter;
@@ -49,11 +49,11 @@ namespace SimpleHelicalSpline.Classes
             else
             { directionFlag = 1; }
 
+            // intialize helical spline
+            hs = new HelicalSpline(rotations, RotateFrequency);
+
             // set the change in z per point
             SetZChangeValue();
-
-            // intialize helical spline
-            hs = new HelicalSpline(rotations);
 
             // create helical spline
             CompileSplinePoints();
@@ -137,15 +137,6 @@ namespace SimpleHelicalSpline.Classes
         public string GetHelicalSplineFileData()
         {
             return hs.ToString();
-        }
-
-        /// <summary>
-        /// Set the amount of points to occur per rotation
-        /// </summary>
-        /// <param name="value">Points in rotation</param>
-        public void SetRotationFrequency(double value)
-        {
-            hs.rotationFrequency = value;
         }
     }
 }

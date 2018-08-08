@@ -27,11 +27,15 @@ namespace SimpleHelicalSpline.Classes
         }
 
         /// <summary>
-        /// Helical Spline constructor
+        /// Helical Spline constructor with rotation frequency change
         /// </summary>
         /// <param name="rotations">Amount of rotations the spline will perform</param>
-        public HelicalSpline(double rotations)
+        /// <param name="RotationFrequency">Frequency of point occurence during rotation</param>
+        public HelicalSpline(double rotations, double RotationFrequency)
         {
+            // set different rotation frequency
+            this.rotationFrequency = RotationFrequency;
+
             // initialize points array with size
             SetPointCount(rotations);
         }

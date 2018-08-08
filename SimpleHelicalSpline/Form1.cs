@@ -45,11 +45,9 @@ namespace SimpleHelicalSpline
                 Double.Parse(txtDiameter.Text),
                 Double.Parse(txtRotations.Text),
                 Double.Parse(txtPitch.Text),
-                (Classes.HSBuilder.clockDirection)lstDirection.SelectedIndex
+                (Classes.HSBuilder.clockDirection)lstDirection.SelectedIndex,
+                ( 1d / double.Parse(cboPPR.SelectedItem.ToString()) )
                 );
-
-            // set rotation frequency of helical spline
-            HSB.SetRotationFrequency(1d / double.Parse(cboPPR.SelectedItem.ToString()));
 
             // savefile dialog setup
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
