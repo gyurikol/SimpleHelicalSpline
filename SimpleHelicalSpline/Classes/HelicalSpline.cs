@@ -11,7 +11,7 @@ namespace SimpleHelicalSpline.Classes
     /// </summary>
     class HelicalSpline
     {
-        public double rotationFrequency = 1d/72d; //((2 * Math.PI) / 72); 5 degrees
+        public double rotationFrequency = 1d/72d; // 5 degrees
         private Point[] points;
         private int currentPointCount = 0;
 
